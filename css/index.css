@@ -2,6 +2,22 @@ body {
     background-color: #252525;
 }
 
-h1 h3 {
+h3 {
     text-align: center;
+    font-family: monospace;
+    margin: 50px;
+    color:white;
+}
+
+html body {
+    height: 100%;
+}
+
+footer {
+    text-align: center;
+}
+
+a {
+    color: lightgray;
+    font-family: monospace, sans-serif;;
 }
