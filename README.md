@@ -1,2 +1,2 @@
-# petesplace
+# petesplace.org
 My personal website
