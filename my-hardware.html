@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Matt Petersen - My Hardware</title>
+        <link rel="icon" type="image/x-icon" href="img/favicon/favicon-32x32.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery-3.5.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/fadeInPage.js"></script>
+        <!-------------------- Custom CSS goes after the Bootstrap links -------->
+        <link rel="stylesheet" type="text/css" href="css/mystyle-project.css">
+
+        <style>
+            a {color: orange;}
+            a:hover {color:black;}
+            img {width: 100%; box-shadow: none;}
+            p {margin-top: 0px; margin-bottom: 0px;}
+            li {font-family: 'Courier New', Courier, monospace; color:black;}
+            body {
+				padding: 10px;
+				/* background: rgb(255,134,0);
+				background: linear-gradient(216deg, rgba(255,134,0,1) 0%, rgba(97,97,97,1) 50%, rgba(0,0,0,1) 100%);  */
+				background: rgb(215,113,0);
+				background: radial-gradient(circle, rgba(215,113,0,1) 0%, rgba(0,0,0,1) 85%);
+                background-attachment: fixed;
+			}
+        </style>
+    </head>
+
+    <body>
+        <svg id="fader"></svg>
+        <script>fadeInPage();</script>
+        <div class="container">
+            <!-- Static navbar -->
+            <div id="topheader navbar navbar-default navbar-inverse">
+                <nav class="navbar navbar-default navbar-inverse">
+                    <div class="container container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="index.html">
+                                    <img src="img/mp-large.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <!-- <li id='home'><a class="nav-link" href="index.html">Home</a></li> -->
+                                <li id='about-me-link'><a class="nav-link" href="about-me.html">About Me</a></li>
+                                <li id='contact-me-link'><a class="nav-link" href="contact-me.php">Contact Me</a></li>
+                                <li id='my-hardware-link current'><a class="nav-link" href="my-hardware.html">My Hardware</a></li>
+                                <li>
+									<div class="button-group">
+										<a class="btn btn-warning navbar-btn" href="my-projects.html">My Projects</a>
+										<a href="#" class="btn btn-warning navbar-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left:-4px;"><span class="caret"></span></a>
+										<ul class="dropdown-menu">
+                                            <li><a href="my-projects/arch-raspi.html">Arch Linux on Raspberry Pi</a></li>
+                                            <li><a href="my-projects/pihole.html">My PiHole Setup</a></li>
+                                            <li><a href="my-projects/wireguard.html">My Wireguard Setup</a></li>
+										</ul>
+									</div>
+                                </li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div><!--/.container-fluid -->
+                </nav>
+            </div>
+        </div> <!-- /container -->
+        <div class="container">
+        
+            <!-- <div class="row"> -->
+        
+                <!-- <div class="col-sm-8 blog-main"> -->
+        
+                    <div class="blog-post">
+                        <h1 class="blog-post-title" style="color:white; text-shadow: 1px 1px 5px #000000;"><u>My Hardware</u></h1>
+                        <p style="color: white; text-shadow: 1px 1px 5px #000000;">Disclaimer: I am not sponsored by any of the companies who manufactured any of these products,<br> nor are any of the links to product pages affiliate links.</p>
+                        <!-- <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p> -->
+                        <br>
+                        <h2 style="color:white">Networking Equipment</h2><br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>My router and wireless access point is a <a href="https://store.ui.com/collections/unifi-network-unifi-os-consoles/products/unifi-dream-machine" target="_blank">Unifi Dream Machine</a> 
+                                    made by Ubiquiti. The user interface is really nice which helped me learn some basic networking concepts.
+                                    If I could go back I would build my own router with <a href="https://www.pfsense.org/" target="_blank">pfsense.</a>
+                                </p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well">
+                                <img src="img/hardware/udm.png">
+                                <p style="text-align: right;">Unifi Dream Machine</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>One of my switches on my network is the <a href="https://store.ui.com/collections/unifi-network-switching/products/unifi-switch-8-60w" target="blank">Unifi Switch 8 (60W).</a>
+                                    I use Power Over Ethernet to power the smaller Flex-mini switch.
+                                </p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well">
+                                <img src="img/hardware/unifi-poe-switch.png">
+                                <p style="text-align: right;">Unifi POE Switch 8 (60W)</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>I use this awesome Unifi <a href="https://store.ui.com/collections/unifi-network-switching/products/usw-flex-mini" target="_blank">Switch Flex Mini</a> switch for extra connectivity.
+                                It's powered by Power over Ethernet from the POE Switch 8 which is nice since it's one less cable I need to worry about.
+                                </p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well">
+                                <img src="img/hardware/unifi-flex-mini.png">
+                                <p style="text-align: right;">Unifi Switch Flex Mini</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <hr>
+                        <br>
+                        <br>
+                        <h2 style="color:white">Server Hardware</h2><br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>The server that does the most work in my network is definitely my <a href="https://www.raspberrypi.com/products/raspberry-pi-4-model-b/" target="_blank">Raspberry Pi 4b.</a>
+                                It hosts the most services, and they all run in Docker containers with the exception of WireGuard®. 
+                                </p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well" style="background-color: white;">
+                                <img src="img/hardware/raspberry-pi-4jpg.jpg">
+                                <p style="text-align: right;">Raspberry Pi 4b</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>My next most used server is my <a href="https://www.synology.com/en-us/products/DS418" target="_blank">Synology DS418 Play.</a> This particular model isn't sold anymore. I also upgraded the RAM with 4 extra Gigabytes. 
+                                    If I could go back, I would have purchased a refurbished Dell PowerEdge server instead, and configured it with <a href="https://www.proxmox.com/en/" target="_blank">Proxmox.</a></p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well" style="background-color: white;">
+                                <img src="img/hardware/ds418-play.jpg">
+                                <p style="text-align: right;">Synology DS418 Play</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>I have 2 Raspberry Pi 3s laying around as well. Currently they are not in use but I plan to implement them in my network using <a href="https://kubernetes.io/" target="_blank">Kubernetes.</a></p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well">
+                                <img src="img/hardware/raspberry-pi-3b-plus.png">
+                                <p style="text-align: right;">Raspberry Pi 3</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>My Dell Inspiron 620s is an old desktop I used in high school, that I've installed <a href="https://getfedora.org/en/server/" target="_blank">Fedora Server</a> on.
+                                This server is also not connected to my network at the moment, but I plan on using it as a <a href="https://coredns.io/" targe="_blank">CoreDNS</a> server in my K8s cluster.
+                                </p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well" style="background-color: white;">
+                                <img src="img/hardware/dell-inspiron-620s.jpg">
+                                <p style="text-align: right;">Dell Inspiron 620s</p>
+                            </div>
+                        </div> <!-- /row -->
+                        <br>
+                        <hr>
+                        <br>
+                        <h2 style="color:white">Personal Computers</h2><br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>My laptop is a <a href="https://www.dell.com/en-us/shop/dell-laptops/xps-13-laptop/spd/xps-13-9310-laptop" target="_blank">Dell XPS 13</a> running Arch Linux.</p>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4 well" style="background-color: white;">
+                                <img src="img/hardware/dell-xps-13.jpg">
+                                <p style="text-align: right;">Dell XPS 13</p>
+                            </div>
+                        </div><!-- /row -->
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-7 well">
+                                <p>I built my desktop computer (not pictured) for gaming in the winter of 2017. It's dual booted with Windows 10 and <a href="https://getfedora.org/en/workstation/">Fedora Workstation.</a></p>
+                                <br>
+                                <p>Component list:</p>
+                                <ul>
+                                    <li>EVGA GTX 1080ti</li>
+                                    <li>Intel i7 7700k</li>
+                                    <li>32Gb Corsair Vengeance DDR4 RAM</li>
+                                    <li>Coolermaster Hyper 212 CPU cooler</li>
+                                    <li>Asus Z270 Prime Motherboard</li>
+                                    <li>WD Blue 2TB Hard Drive</li>
+                                    <li>512GB Samsung 850 Pro</li>
+                                    <li>500GB Samsung 970 Pro</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div><!-- /row -->
+                    </div><!-- /.blog-post -->
+                <!-- </div>/.blog-main -->
+            <!-- </div> row -->
+            <hr>
+        </div> <!-- /container-->
+        <footer class="footer" style="margin-bottom: 20px;">
+            <div class="container">
+                <p class="text-muted" style="text-shadow: 2px 2px 5px #000000;color:white;">
+                    My other links: &nbsp;&nbsp;
+                    <a href="https://www.linkedin.com/in/mattrpete/" target="_blank">Linkedin</a>&nbsp;&nbsp;
+                    <a href="https://github.com/mrpete13" target="_blank">Github</a>
+                </p>
+            </div>
+        </footer>
+            <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="js/hilight-active.js"></script>
+    </body>
+</html>

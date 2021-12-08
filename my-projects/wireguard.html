@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Matt Petersen - Wireguard</title>
+        <link rel="icon" type="image/x-icon" href="../img/favicon/favicon-32x32.png">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/fadeInPage.js"></script>
+        <!-------------------- Custom CSS goes after the Bootstrap links -------->
+        <link rel="stylesheet" type="text/css" href="../css/mystyle-project.css">
+        <link href="../css/blog.css" type="text/css" rel="stylesheet">
+
+        <style>
+            a:hover {
+                color: navy;
+            }
+        </style>
+    </head>
+
+    <body>
+        <svg id="fader"></svg>
+        <script>fadeInPage();</script>
+        <div class="container">
+            <!-- Static navbar -->
+            <div id="topheader navbar navbar-default navbar-inverse">
+                <nav class="navbar navbar-default navbar-inverse">
+                    <div class="container container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="container-fluid">
+                                <a class="navbar-brand" href="../index.html">
+                                    <img src="../img/mp-large.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <!-- <li id='home'><a class="nav-link" href="../index.html">Home</a></li> -->
+                                <li id='about-me-link'><a class="nav-link" href="../about-me.html">About Me</a></li>
+                                <li id='contact-me-link'><a class="nav-link" href="../contact-me.php">Contact Me</a></li>
+                                <li id='my-hardware-link'><a class="nav-link" href="../my-hardware.html">My Hardware</a></li>
+                                <li>
+                                    <div class="button-group">
+                                        <a class="btn btn-warning navbar-btn" href="../my-projects.html">My Projects</a>
+                                        <a href="#" class="btn btn-warning navbar-btn dropdown-toggle" data-toggle="dropdown"
+                                            role="button" aria-haspopup="true" aria-expanded="false" style="margin-left:-4px;"><span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="arch-raspi.html">Arch Linux on Raspberry Pi</a></li>
+                                            <li><a href="pihole.html">My PiHole Setup</a></li>
+                                            <li><a href="#">My WireGuard® Setup</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div><!--/.container-fluid -->
+                </nav>
+            </div>
+        </div> <!-- /container -->
+
+        <div class="container">
+        
+            <div class="row">
+        
+                <div class="col-sm-8 blog-main">
+        
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">My WireGuard® Setup</h2>
+                        <p class="blog-post-meta">November 26, 2021</p>
+                        <br>
+                        <p><a href="https://www.wireguard.com/" target="_blank">Wireguard</a> is a modern lightweight VPN protocol that has recently been included in the Linux kernel which is a big reason I chose to use this protocol.<br><br>
+                        It's relatively easy to set up compared to other VPN protocols, but the instructions on the website can be confusing to people who are learning (I was in the same position), so I decided to make a guide explaining things for newbies.<br><br>
+                        As with all my other projects I am using my Raspberry Pi 4b during this tutorial. I used this model because it's the only Pi I own with gigabit Ethernet onboard.<br><br>
+                        Running a VPN Server from home allows you to safely access your home network from laptops, tablets, or smartphones while not connected to your home internet.</p>
+                        <br>
+                        <hr>
+                        <h3>Step-by-step</h3>
+                        <p>To see how to install WireGuard for your devices, visit <a href="https://www.wireguard.com/install" target="_blank">the install page.</a><br><br>
+                        The WireGuard Network interface then needs to be added to your device.</p>
+                        <pre><code>$ sudo ip link add dev wg0 type wireguard</code></pre>
+                        <p>Next verify that the interface was added.</p>
+                        <pre><code>$ ip addr show wg0
+31: wg0: &lt;POINTOPOINT,NOARP&gt; mtu 1420 qdisc noop state DOWN group default qlen 1000
+    link/none</code></pre>
+                        <p>Next we need to create the wireguard configuration file for the wg0 interface.</p>
+                        <pre><code>$ sudo touch /etc/wireguard/wg0.conf</code></pre>
+                        <p>To edit this file choose your favorite text editor, I prefer Vim, but recommend Nano for those who are new to the command line. We'll come back to this later however.<br><br>
+                        We then need to assign an IP address to wg0</p>
+                        <pre><code>$ sudo ip addr add 10.0.0.1/24 dev wg0</code></pre>
+                        <p>To make sure all keys are stored in the proper directory, we need to switch to the root user, and change directories to /etc/wireguard</p>
+                        <pre><code>$ su
+# cd /etc/wireguard</code></pre>
+                        <p>This address is only internal to the WireGuard tunnel. the /24 denotes there are a possible 254 clients that can use this interface.<br><br>
+                        Before we generate our cryptographic keys, we need to change the permissions of the <code>/etc/wireguard</code> directory.</p>
+                        <pre><code># umask 077
+# wg genkey wg0-privatekey</code></pre>
+                        <p>We can then derive our public key from our private key</p>
+                        <pre><code># wg pubkey &lt; wg0-privatekey &gt; wg0-publickey</code></pre>
+                        <p>Now we need to start filling in the <code>wg0.conf</code> file</p>
+                        <p>Copy and paste the follwing template into your <code>wg0.conf</code> file:</p>
+                        <pre><code style="white-space: nowrap;">[Interface]<br>
+Address = 10.0.0.1/24, fdc9:281f:04d7:9ee9::1/64<br>
+DNS = 10.0.0.1<br>
+SaveConfig = true<br>
+PrivateKey = {wg0-privatekey}<br>
+ListenPort = 51820<br>
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE; ip6tables -A FORWARD -i %i -j ACCEPT; ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE<br>
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE; ip6tables -D FORWARD -i %i -j ACCEPT; ip6tables -t nat -D POSTROUTING -o eth0 -j MASQUERADE<br>
+<br>
+<br>
+[Peer]<br>
+PublicKey = {client-publickey}<br>
+PresharedKey =<br>
+AllowedIPs = 10.0.0.2/32, fdc9:281f:04d7:9ee9::2/128</code></pre>
+                        <p>The <code>PostUp</code> and <code>PostDown</code> lines are IP table rules that allow you to access your home's LAN from afar.</p>
+                        <p>We can now create your client's keys. This time we are going to create the public key and private key at the same time.</p>
+                        <pre><code># wg genkey | tee client-privatekey | wg pubkey > client-publickey</code></pre>
+                        <p>Feel free to change "client" in these file names to the name of the device you want to connect to the tunnel. In my case I chose <code>phone-privatekey</code> and <code>phone-publickey</code>
+                        <br><br>Now we need to create the first client's configuration file.</p>
+                        <pre><code># touch client.conf</code></pre>
+                        <p>Copy and paste the client's template into <code>client.conf</code></p>
+                        <pre><code>[Interface]
+Address = 10.0.0.2/32, fdc9:281f:04d7:9ee9::2/128
+DNS = 10.0.0.1
+PrivateKey = {client-privatekey}
+
+
+[Peer]
+PublicKey = {wg0-publickey}
+PresharedKey = 
+AllowedIPs = 10.0.0.1/24, fdc9:281f:04d7:9ee9::1/64
+Endpoint = {your.home.ip.here}:51820</code></pre>
+                        <br>
+                        <p>Be sure to replace anything in curly braces with the correct information relative to your setup. You can find your home network's public IP address by going <a href="https://www.whatsmyip.org/" target="_blank">here.</a>
+                        <code>:51820</code> specifies the port number on which to communicate with the Endpoint IP. This is the standard WireGuard port.</p>
+                        <p>Next we will generate the PresharedKey, which allegedly protects against decryption of tunnel traffic by quantum computers.</p>
+                        <pre><code># wg genpsk</code></pre>
+                        <p>Copy and paste this output to the <code>PresharedKey =</code> line of both configuration files.<br>
+                        <hr>
+                        There are many ways to add your client configuration file to your client. I prefer scanning a QR code.</p>
+                        <pre><code># qrencode -t ansiutf8 < client.conf</code></pre>
+                        <p>Open your WireGuard app on your phone and tap the <code>+</code> in the top right corner, and select <code>Create from QR Code</code>.</p>
+                        <p>Before we turn on our tunnel for the first time, you need to enable port forwarding of port <code>51820</code> to your endpoint. There are too many varieties of router for me to cover each and every method to enable port forwarding. However there are plenty of resources online to use as reference for your specific router.<br><br>
+                        After enabling port forwarding, on your server, enter</p>
+                        <pre><code>$ sudo wg-quick up wg0</code></pre>
+                        <p>This turns on your interface inside your home network to access from the outside.<br>
+                        You can then verify the tunnel works on your phone by turning off WiFi and switching on the tunnel in the WireGuard app. If you go to <a href="https://www.whatsmyip.org/" target="_blank">this link</a> and it's the same as your IP from the previous step, your tunnel is working properly.<br><br>
+                        You can close the connection on your server with the command <code>sudo wg-quick down wg0</code></p>
+                        <p>Take the following steps if you have no interntet connection:</p>
+                        <ul>
+                            <li>Verify all keys correspond to the correct line in the configuration files.</li><br>
+                            <li>Verify the DNS server is connected to the WireGuard tunnel, and it is the internal tunnel IP. In the case of this tutorial: <code>10.0.0.1</code></li>
+                        </ul>
+
+
+                    </div><!-- /.blog-post -->
+                </div><!-- /.blog-main -->
+        
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <!--    <div class="sidebar-module sidebar-module-inset">
+                        <h4 style="color: black;">About</h4>
+                        <p style="color: black;">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis
+                            consectetur purus sit amet
+                            fermentum. Aenean lacinia bibendum nulla sed consectetur.</p> -->
+                    </div>
+                    
+                    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                        <div class="sidebar-module sidebar-module-inset">
+                            <h4 style="color: black;">Sources</h4>
+                            <a href="https://www.wireguard.com/" target="_blank">wireguard.com</a><br>
+                            <a href="https://wiki.archlinux.org/title/WireGuard" target="_blank">Arch Wiki</a><br>
+                            
+                    </div>
+
+                    <div class="sidebar-module">
+                        <h4>My Links</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="https://github.com/mrpete13">GitHub</a></li>
+                            <li><a href="https://linkedin.com/in/mattrpete">Linkedin</a></li>
+                        </ol>
+                    </div>
+                </div><!-- /.blog-sidebar -->
+        
+            </div><!-- /.row -->
+        
+        </div><!-- /.container -->
+        
+        <footer class="blog-footer">
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </footer>
+
+            <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="js/hilight-active.js"></script>
+    </body>
+</html>
