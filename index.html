@@ -14,8 +14,8 @@
 		<title>Matt Petersen - My Website</title>
 		<link rel="icon" type="image/x-icon" href="img/favicon/favicon-32x32.png">
 
-		<!-- Bootstrap -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Tailwind -->
+		<link href="dist/main.css" rel="stylesheet">
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="js/jquery-3.5.1.min.js"></script>
@@ -82,97 +82,59 @@
 		</style>
 
 	</head>
+
 	<body>
-	<svg id="fader"></svg>
-	<script>fadeInPage();</script>
-		<div class="container">
-            <!-- Static navbar -->
-            <div id="topheader navbar navbar-default navbar-inverse">
-                <nav class="navbar navbar-default navbar-inverse">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<div class="container-fluid">
-								<a class="navbar-brand" href="index.html">
-									<img src="img/mp-large.png" style="border-radius: 0; max-width: 35px;">
-								</a>
-							</div>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <!-- <li id='home'><a class="nav-link" href="index.html">Home</a></li> -->
-                                <li id='about-me-link'><a class="nav-link" href="about-me.html">About Me</a></li>
-                                <li id='contact-me-link'><a class="nav-link" href="contact-me.php">Contact Me</a></li>
-                                <li id='my-hardware-link'><a class="nav-link" href="my-hardware.html">My Hardware</a></li>
-                                <li>
-									<div class="button-group">
-										<a class="btn btn-warning navbar-btn" href="my-projects.html">My Projects</a>
-										<a href="#" class="btn btn-warning navbar-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left:0px;"><span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="my-projects/arch-raspi.html">Arch Linux on Raspberry Pi</a></li>
-											<li><a href="my-projects/pihole.html">My PiHole Setup</a></li>
-											<li><a href="my-projects/wireguard.html">My WireGuard® Setup</a></li>
-										</ul>
-									</div>
-                                </li>
-                            </ul>
-                        </div><!--/.nav-collapse -->
-                    </div><!--/.container-fluid -->
-                </nav>
-            </div>
-        </div> <!-- /container -->
-		
-		<div class="container">				
-			<main style="margin-top: 20%;">
-				<div class="row">
-					<div class="col-md-6">
-						<!-- <h2 style="text-shadow: 1px 1px 5px #000; color:white;">My name is Matt Petersen,</h2>
-						<h3 style="text-shadow: 1px 1px 5px #000; color:white;">Welcome to my website.</h3> -->
-						<h2>My name is Matt Petersen,</h2>
-						<h3>Welcome to my website.</h3>
-						<!-- <img class="img img-responsive" src="../img/self_portrait.png" alt="Picture of me"> -->
-					</div>
-					<div class="col-md-6 mx-auto">
-						<p>
-							I created this site to share tutorials on how I configured my network, as well as showcasing my IT skills and sharing a little about myself.  
-						</p>
-						<hr>
-						<ul>
-							<li><a href="my-projects.html">My Projects</a></li>
-							<li><a href="my-hardware.html">My Hardware</a></li>
-							<li><a href="about-me.html">About Me</a></li>
-							<li><a href="contact-me.php">Contact Me</a></li>
-						</ul>
-					</div>
+		<svg id="fader"></svg>
+		<script>fadeInPage();</script>
+	
+		<a class="" href="index.html">
+			<img src="img/mp-large.png" style="border-radius: 0; max-width: 35px;">
+		</a>
+	
+		<ul class="">
+			<!-- <li id='home'><a class="nav-link" href="index.html">Home</a></li> -->
+			<li id='about-me-link'><a class="nav-link" href="about-me.html">About Me</a></li>
+			<li id='contact-me-link'><a class="nav-link" href="contact-me.php">Contact Me</a></li>
+			<li id='my-hardware-link'><a class="nav-link" href="my-hardware.html">My Hardware</a></li>
+			<li>
+				<div class="button-group">
+					<a class="btn btn-warning navbar-btn" href="my-projects.html">My Projects</a>
+					<a href="#" class="btn btn-warning navbar-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left:0px;"><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="my-projects/arch-raspi.html">Arch Linux on Raspberry Pi</a></li>
+						<li><a href="my-projects/pihole.html">My PiHole Setup</a></li>
+						<li><a href="my-projects/wireguard.html">My WireGuard® Setup</a></li>
+					</ul>
 				</div>
+			</li>
+	
+			<main style="margin-top: 20%;">
+	
+				<h2>My name is Matt Petersen,</h2>
+				<h3>Welcome to my website.</h3>
+				<!-- <img class="img img-responsive" src="../img/self_portrait.png" alt="Picture of me"> -->
+				</div>
+				<p>
+					I created this site to share tutorials on how I configured my network, as well as showcasing my IT skills and sharing a little about myself.
+					</p>
+					<hr>
+					<ul>
+						<li><a href="my-projects.html">My Projects</a></li>
+						<li><a href="my-hardware.html">My Hardware</a></li>
+						<li><a href="about-me.html">About Me</a></li>
+						<li><a href="contact-me.php">Contact Me</a></li>
+					</ul>
 			</main>
 			<footer class="footer">
-				<div class="container">
-					<p class="text-muted" style="text-shadow: 2px 2px 5px #000000;color:white;">
-						My other links: &nbsp;&nbsp;
-						<a href="https://www.linkedin.com/in/mattrpete/" target="_blank">Linkedin</a>&nbsp;&nbsp;
-						<a href="https://github.com/mrpete13" target="_blank">Github</a>
-					</p>
-				</div>
+	
+				<p class="text-muted" style="text-shadow: 2px 2px 5px #000000;color:white;">
+					My other links: &nbsp;&nbsp;
+					<a href="https://www.linkedin.com/in/mattrpete/" target="_blank">Linkedin</a>&nbsp;&nbsp;
+					<a href="https://github.com/mrpete13" target="_blank">Github</a>
+				</p>
+	
 			</footer>
-		</div>
-						
-
-		<!-- Bootstrap core JavaScript
-				================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-			integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-			crossorigin="anonymous"></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="../../dist/js/bootstrap.min.js"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-		<script src="js/hilight-active.js"></script>
+			<script src="js/hilight-active.js"></script>
 	</body>
+	
 </html>
