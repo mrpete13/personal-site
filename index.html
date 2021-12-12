@@ -15,25 +15,14 @@
 		<link rel="icon" type="image/x-icon" href="img/favicon/favicon-32x32.png">
 
 		<!-- Tailwind -->
-		<link href="dist/main.css" rel="stylesheet">
+		<link href="/dist/main.css" rel="stylesheet">
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery-3.5.1.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/fadeInPage.js"></script>
+		<!-- <script src="js/fadeInPage.js"></script> -->
 
 		<!-- Your Custom CSS -->
-		<link href="css/mystyle-project.css" rel="stylesheet">
 
 		<!-- Your Custom Java Script Links -->
 		<style>
-			html, body {
-				height: 100%;
-				width: 100%;
-				margin:0;
-				padding: 0;
-			}
 
 			body {
 				padding: 10px;
@@ -41,100 +30,240 @@
 				background: radial-gradient(circle, rgba(215,113,0,1) 0%, rgba(0,0,0,1) 85%);
 				background-attachment: fixed;
 			}
-		
-			main {
-				background-color: #f5f5f5;
-				padding: 30px;
-				border-radius: 15px;
-				margin: auto;
-				box-shadow: 1px 1px 10px black;
-				
-			}
-		
-			h1 {
-				color: rgb(204, 115, 42);
-				padding-left:30px;
-			}
-		
-			h2 {
-				color: #000000;
-			}
-
-			img {
-				border-radius: 15px;
-				max-width: 75%;
-			}
-
-			ul {
-				color:black;
-			}
-
-			p {
-				font-family: 'Courier New', Courier, monospace;
-				color:black;
-				margin-top: 25px;
-			}
-			 a {
-                color: #ec971f;
-                font-family: 'Courier New', Courier, monospace;
-            }
 
 		</style>
 
 	</head>
 
-	<body>
-		<svg id="fader"></svg>
-		<script>fadeInPage();</script>
-	
-		<a class="" href="index.html">
-			<img src="img/mp-large.png" style="border-radius: 0; max-width: 35px;">
-		</a>
-	
-		<ul class="">
-			<!-- <li id='home'><a class="nav-link" href="index.html">Home</a></li> -->
-			<li id='about-me-link'><a class="nav-link" href="about-me.html">About Me</a></li>
-			<li id='contact-me-link'><a class="nav-link" href="contact-me.php">Contact Me</a></li>
-			<li id='my-hardware-link'><a class="nav-link" href="my-hardware.html">My Hardware</a></li>
-			<li>
-				<div class="button-group">
-					<a class="btn btn-warning navbar-btn" href="my-projects.html">My Projects</a>
-					<a href="#" class="btn btn-warning navbar-btn dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="margin-left:0px;"><span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="my-projects/arch-raspi.html">Arch Linux on Raspberry Pi</a></li>
-						<li><a href="my-projects/pihole.html">My PiHole Setup</a></li>
-						<li><a href="my-projects/wireguard.html">My WireGuard® Setup</a></li>
-					</ul>
+	<body class="">
+
+		<!-- <svg id="fader"></svg>
+		<script>fadeInPage();</script> -->
+		<nav class="bg-white shadow dark:bg-gray-800 rounded">
+			<div class="
+		      container
+		      px-6
+		      py-3
+			  mx-20
+		      md:flex md:justify-between md:items-center
+		    ">
+				<div class="flex items-center justify-between">
+					<div>
+							<a class="
+							hover:shadow-lg
+
+						
+						" href="index.html"><img src="img/mp-large.png" style="border-radius: 0; max-width: 35px;">
+						</a>
+					</div>
+		
+					<!-- Mobile menu button -->
+					<div class="flex md:hidden">
+						<button type="button" class="
+		            text-gray-500
+		            dark:text-gray-200
+		            hover:text-gray-600
+		            dark:hover:text-gray-400
+		            focus:outline-none focus:text-gray-600
+		            dark:focus:text-gray-400
+		          " aria-label="toggle menu">
+							<svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
+								<path fill-rule="evenodd"
+									d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z">
+								</path>
+							</svg>
+						</button>
+					</div>
 				</div>
-			</li>
-	
-			<main style="margin-top: 20%;">
-	
-				<h2>My name is Matt Petersen,</h2>
-				<h3>Welcome to my website.</h3>
+		
+				<!-- Mobile Menu open: "block", Menu closed: "hidden" -->
+				<div class="items-center md:flex selection:bg-orange-400">
+					<div class="flex flex-col md:flex-row md:mx-6">
+						<div class="flex flex-wrap">
+							<div class="w-full sm:w-6/12 md:w-4/12 px-4">
+								<div class="relative inline-flex align-middle w-full">
+									<button class="
+						          bg-orange-400
+						          text-white
+						          active:bg-cyan-400
+						          font-bold
+						          uppercase
+						          text-xs
+						          px-2
+						          py-2
+						          rounded
+						          shadow
+						          hover:shadow-md
+								  hover:bg-cyan-600
+						          outline-none
+						          focus:outline-none
+						          mr-1
+						          mb-1
+						          ease-linear
+						          transition-all
+						          duration-150
+						        " type="button" onclick="openDropdown(event,'dropdown-example-1')">
+										Projects
+									</button>
+									<div class="
+						          hidden
+						          bg-white
+						          text-base
+						          z-50
+						          float-left
+						          py-2
+						          list-none
+						          text-left
+						          rounded
+						          shadow-lg
+						          mt-1
+						        " style="min-width: 12rem" id="dropdown-example-1">
+										<a href="my-projects/arch-raspi.html" class="
+						            text-sm
+						            py-2
+						            px-4
+						            font-normal
+						            block
+						            w-full
+						            whitespace-nowrap
+						            bg-transparent
+						            text-gray-700
+						            hover:bg-gray-100
+						          ">
+											Arch Linux on Raspberry Pi
+										</a>
+										<a href="my-projects/pihole.html" class="
+						            text-sm
+						            py-2
+						            px-4
+						            font-normal
+						            block
+						            w-full
+						            whitespace-nowrap
+						            bg-transparent
+						            text-gray-700
+						            hover:bg-gray-100
+						          ">
+											My PiHole Setup
+										</a>
+										<a href="my-projects/wireguard.html" class="
+						            text-sm
+						            py-2
+						            px-4
+						            font-normal
+						            block
+						            w-full
+						            whitespace-nowrap
+						            bg-transparent
+						            text-gray-700
+						            hover:bg-gray-100
+						          ">
+											My WireGuard® Setup
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<a class="
+		            my-1
+		            text-gray-700
+		            dark:text-gray-200
+		            hover:text-indigo-500
+		            dark:hover:text-indigo-400
+		            md:mx-4 md:my-0
+		          " href="my-hardware.html">My Hardware</a>
+						<a class="
+		            my-1
+		            text-gray-700
+		            dark:text-gray-200
+		            hover:text-indigo-500
+		            dark:hover:text-indigo-400
+		            md:mx-4 md:my-0
+		          " href="contact-me.php">Contact Me</a>
+						<a class="
+		            my-1
+		            text-gray-700
+		            dark:text-gray-200
+		            hover:text-indigo-500
+		            dark:hover:text-indigo-400
+		            md:mx-4 md:my-0
+		          " href="about-me.html">About Me</a>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<div class="
+				    container
+				    w-full
+				    p-20
+				    m-4
+				    mx-auto
+				    my-16
+				    text-center
+				    bg-white
+				    border-solid
+				    h-auto
+				    rounded-xl
+					mt-20 
+					text-black-500 
+					text-md
+					shadow-lg
+				  ">
+				<!-- class="mt-20 italic text-gray-500 text-md" -->
+			<main class="container mx-auto grid grid-cols-2 gap-4">
+				<div class="col-span-1 text-left selection:bg-orange-400">
+					<h2 class="text-3xl font-bold">My name is Matt Petersen,</h2>
+					<h3 class="text-3xl font-bold">Welcome to my website.</h3>
+				</div>
 				<!-- <img class="img img-responsive" src="../img/self_portrait.png" alt="Picture of me"> -->
-				</div>
-				<p>
-					I created this site to share tutorials on how I configured my network, as well as showcasing my IT skills and sharing a little about myself.
+				<div class="col-span-1">
+					<p class="text-black-500 text-md text-left selection:bg-orange-400">
+						I created this site to share tutorials on how I configured my network, as well as showcasing my IT skills and
+						sharing a little about myself.
 					</p>
-					<hr>
-					<ul>
-						<li><a href="my-projects.html">My Projects</a></li>
-						<li><a href="my-hardware.html">My Hardware</a></li>
-						<li><a href="about-me.html">About Me</a></li>
-						<li><a href="contact-me.php">Contact Me</a></li>
-					</ul>
+				</div>
+				
 			</main>
-			<footer class="footer">
-	
-				<p class="text-muted" style="text-shadow: 2px 2px 5px #000000;color:white;">
-					My other links: &nbsp;&nbsp;
-					<a href="https://www.linkedin.com/in/mattrpete/" target="_blank">Linkedin</a>&nbsp;&nbsp;
-					<a href="https://github.com/mrpete13" target="_blank">Github</a>
-				</p>
-	
-			</footer>
-			<script src="js/hilight-active.js"></script>
+			
+		</div>
+		
+		<footer class="footer px-6">
+
+			<p class="text-muted" style="text-shadow: 2px 2px 5px #000000;color:white;">
+				My other links: &nbsp;&nbsp;
+				<a href="https://www.linkedin.com/in/mattrpete/"
+				   target="_blank"
+				   class="hover:text-cyan-400 text-orange-400"  
+				   >Linkedin</a>&nbsp;&nbsp;
+				<a href="https://github.com/mrpete13"
+				 target="_blank"
+				 class="hover:text-cyan-400 text-orange-400" 
+				 >Github</a>
+			</p>
+
+		</footer>
+		<script src="js/hilight-active.js"></script>
+		
+		<!-- Required popper.js -->
+		<script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
+		<script>
+			function openDropdown(event, dropdownID) {
+				let element = event.target;
+				while (element.nodeName !== "BUTTON") {
+					element = element.parentNode;
+				}
+				var popper = Popper.createPopper(
+					element,
+					document.getElementById(dropdownID),
+					{
+						placement: "bottom-start",
+					}
+				);
+				document.getElementById(dropdownID).classList.toggle("hidden");
+				document.getElementById(dropdownID).classList.toggle("block");
+			}
+		</script>
 	</body>
 	
 </html>
